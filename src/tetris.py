@@ -147,6 +147,8 @@ class Tetris(object):
             print 'The game is over, stop trying to make a move.'
 
 
+# Uncomment the following code to play tetris using keyboard input and pygame animation.
+
 # game = Tetris()
 # pygame.init()
 # screen = pygame.display.set_mode((300,450))
