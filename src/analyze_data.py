@@ -1,20 +1,22 @@
+'''
+The following code analyzes the results of the genetic algorithm by plotting the trend of the performance of each
+Tetris player generation.
+'''
+
+import plotly.plotly as py
+import plotly.graph_objs as go
+
+# load the text file containing the data to be analyzed
 f = open("fitness_values.txt", 'r')
 lines = f.readlines()
 data = []
 for i in range(0, 6):
     data.append(lines[i].split(", "))
 
+# load the data into useable data structures
 data = [[-float(j) for j in i] for i in data]
-
-print data
-
 avg = [sum(i)/len(i) for i in data]
-print avg
 max = [max(i) for i in data]
-print max
-
-import plotly.plotly as py
-import plotly.graph_objs as go
 
 x0 = []
 for i in range(1, 7):
@@ -23,6 +25,7 @@ y0 = []
 for i in range(0, 6):
     y0 += data[i]
 
+# create traces
 trace0 = go.Scatter(
     x = x0,
     y = y0,
@@ -42,7 +45,8 @@ trace2 = go.Scatter(
     name = 'Maximum Fitness'
 )
 data = [trace0, trace1, trace2]
-print data
+
+# set layout
 layout = go.Layout(
     title='Growth of Population Fitness',
     xaxis=dict(
